@@ -1,34 +1,170 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
+/* Police d'écriture */
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap");
 
-label {
-display: block;
-margin-bottom: 10px;
+/* Réglages généraux */
+* {
+    box-sizing: border-box;
 }
 
 body {
-font-family: "Nunito", sans-serif;
+    margin: 0;
+    padding: 40px;
+    min-height: 100vh;
+    font-family: "Nunito", sans-serif;
+    color: #26352b;
+    background:
+        linear-gradient(rgba(242, 248, 239, 0.92), rgba(242, 248, 239, 0.92)),
+        url("https://images.unsplash.com/photo-1498837167922-ddd27525d352");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Titres principaux */
+body > h1,
+body > p,
+body > h2 {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
 
 h1 {
-text-align: center;
-color: palevioletred;
+    margin-top: 0;
+    margin-bottom: 12px;
+    color: #287447;
+    font-size: clamp(2.2rem, 5vw, 3.7rem);
+    font-weight: 800;
+    letter-spacing: -2px;
 }
 
-h2 {
-color: palevioletred;
+body > p {
+    max-width: 850px;
+    margin-bottom: 30px;
+    color: #5c6d62;
+    font-size: 1.1rem;
+    line-height: 1.7;
 }
 
-h3 {
-color:maroon;
+body > h2 {
+    margin-bottom: 35px;
+    color: #344e3d;
+    font-size: 1.35rem;
 }
 
-.conteneur {
-  display: flex;
-  justify-content: space-between;
-  gap: 30px;
+/* Les deux grandes colonnes */
+.conteneur-principal {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
 }
 
+/* Cartes gauche et droite */
 .bloc-gauche,
-.bloc-droite {
-  width: 50%;
+.bloc-droit {
+    padding: 30px;
+    border: 1px solid rgba(59, 122, 78, 0.15);
+    border-radius: 24px;
+    background-color: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 12px 35px rgba(41, 83, 53, 0.12);
+}
+
+/* Titre du bowl */
+.bloc-droit > h2 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: #287447;
+    font-size: 1.8rem;
+}
+
+.bloc-droit > p {
+    margin-top: 0;
+    color: #66776c;
+}
+
+/* Titres des catégories */
+h3 {
+    margin-top: 28px;
+    margin-bottom: 14px;
+    padding-left: 12px;
+    color: #287447;
+    font-size: 1.25rem;
+    border-left: 5px solid #f0ad4e;
+}
+
+.bloc-gauche h3:first-child,
+.creer-bowl h3:first-child {
+    margin-top: 12px;
+}
+
+/* Chaque choix */
+label {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 13px 15px;
+    color: #405046;
+    line-height: 1.4;
+    cursor: pointer;
+    border: 1px solid #dbe8df;
+    border-radius: 12px;
+    background-color: #f8fcf8;
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+/* Animation au passage de la souris */
+label:hover {
+    transform: translateY(-2px);
+    border-color: #65a878;
+    background-color: #edf8ef;
+    box-shadow: 0 5px 12px rgba(58, 112, 73, 0.1);
+}
+
+/* Boutons radio et cases à cocher */
+input[type="radio"],
+input[type="checkbox"] {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    cursor: pointer;
+    accent-color: #3d8b58;
+}
+
+/* Mettre en évidence un choix sélectionné */
+label:has(input:checked) {
+    color: #205e38;
+    font-weight: 700;
+    border-color: #3d8b58;
+    background-color: #dff2e4;
+}
+
+/* Version téléphone et tablette */
+@media (max-width: 850px) {
+    body {
+        padding: 25px 15px;
+    }
+
+    .conteneur-principal {
+        grid-template-columns: 1fr;
+    }
+
+    .bloc-gauche,
+    .bloc-droit {
+        padding: 22px;
+    }
+
+    h1 {
+        letter-spacing: -1px;
+    }
 }
